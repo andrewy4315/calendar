@@ -6,7 +6,7 @@ const cors = require('cors');
 
 const app = express();
 const PORT = process.env.PORT || 5000;
-const mongoURI = 'mongodb+srv://ay4315:W2hr2nnKcGIuuv75@tmcluster.csdp0xa.mongodb.net/?retryWrites=true&w=majority';
+const mongoURI = 'my_uri';
 
 app.use(cors());
 app.use(bodyParser.json());
