@@ -16,42 +16,45 @@ const Login = () => {
                 username,
                 password,
             });
-    
-            if (response.data) {
-                navigate('/Calendar');
+
+            if (response.data.success) {
+                const { allTodos } = response.data;
+                navigate('/Calendar', { state: { allTodos, username } });
             } else {
                 setFailed(true);
             }
         } catch (error) {
-            console.error('u fucked up:', error.message);
+            console.error('login error:', error.message);
         }
     };
 
-    return ( 
-        <div className="login">
-            <h2>Login</h2>
-            <form>
-                <label>Username: </label>
-                <input
-                    type="text"
-                    required
-                    value={username}
-                    onChange={(e) => setUsername(e.target.value)}
-                />
-                <br></br>
-                <label>Password: </label>
-                <input
-                    type="password"
-                    required
-                    value={password}
-                    onChange={(e) => setPassword(e.target.value)}
-                />
-                <br></br>
-                <button onClick={handleLogin}>Login</button>
-                <br></br>
-                <p>Don't have an account yet? <Link to="/signup">Sign Up</Link></p>
-                {failed && <p style={{color: 'red'}}>Incorrect username or password</p>}
-            </form>
+    return (
+        <div className="login-page">
+            <div className="login">
+                <h2>Login</h2>
+                <form>
+                    <label>Username: </label>
+                    <input
+                        type="text"
+                        required
+                        value={username}
+                        onChange={(e) => setUsername(e.target.value)}
+                    />
+                    <br></br>
+                    <label>Password: </label>
+                    <input
+                        type="password"
+                        required
+                        value={password}
+                        onChange={(e) => setPassword(e.target.value)}
+                    />
+                    <br></br>
+                    <button onClick={handleLogin}>Login</button>
+                    <br></br>
+                    <p>Don't have an account yet? <Link to="/signup">Sign Up</Link></p>
+                    {failed && <p className="error-message">Incorrect username or password</p>}
+                </form>
+            </div>
         </div>
     );
 }

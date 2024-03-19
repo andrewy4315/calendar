@@ -27,31 +27,33 @@ const Login = () => {
         }
     };
 
-    return ( 
-        <div className="signup">
-            <h2>Sign Up</h2>
-            <form>
-                <label>Username: </label>
-                <input
-                    type="text"
-                    required
-                    value={username}
-                    onChange={(e) => setUsername(e.target.value)}
-                />
-                <br></br>
-                <label>Password: </label>
-                <input
-                    type="password"
-                    required
-                    value={password}
-                    onChange={(e) => setPassword(e.target.value)}
-                />
-                <br></br>
-                <button onClick={handleSignup}>Sign Up</button>
-                <br></br>
-                <p>Already have an account? <Link to="/">Log In</Link></p>
-                {failed && <p style={{color: 'red'}}>This username is alreay occupied.</p>}
-            </form>
+    return (
+        <div className="signup-page">
+            <div className="signup">
+                <h2>Sign Up</h2>
+                <form>
+                    <label>Username: </label>
+                    <input
+                        type="text"
+                        required
+                        value={username}
+                        onChange={(e) => setUsername(e.target.value)}
+                    />
+                    <br></br>
+                    <label>Password: </label>
+                    <input
+                        type="password"
+                        required
+                        value={password}
+                        onChange={(e) => setPassword(e.target.value)}
+                    />
+                    <br></br>
+                    <button onClick={handleSignup}>Sign Up</button>
+                    <br></br>
+                    <p>Already have an account? <Link to="/">Log In</Link></p>
+                    {failed && <p className="error-message">This username is alreay occupied.</p>}
+                </form>
+            </div>
         </div>
     );
 }
