@@ -18,7 +18,7 @@ const Login = () => {
             });
     
             if (response.data) {
-                navigate('/Calendar');
+                navigate('/Calendar', { state: { username } });
             } else {
                 setFailed(true);
             }
